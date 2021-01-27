@@ -51,7 +51,7 @@
     .item-product {
         width: 100%;
         display: flex;
-        background: rgba(33, 92, 99, 0.19);
+        background: #d3e1e2;
 
         .title-block {
             width: 75%;
@@ -65,6 +65,7 @@
                 flex-direction: column;
                 justify-content: space-around;
                 min-height: 40px;
+                width: 70%;
             }
 
             .btns {
@@ -80,7 +81,7 @@
 
         .price {
             width: 25%;
-            background-color: #f3f3f3;
+            background-color:  #EFFFEF;
             display: flex;
 
             span {
@@ -93,12 +94,12 @@
         }
 
         .price-2 {
-            background-color: rgba(243, 243, 243, 0.54);
+            background-color: #f3f3f3;
         }
     }
 
     .item-product-2 {
-        background: rgba(12, 72, 6, 0.19);
+        background: #d0decf;
     }
     .item-product-in-basket {
         background-color: rgba(26, 162, 68, 0.95);
