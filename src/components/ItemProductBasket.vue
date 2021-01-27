@@ -37,7 +37,7 @@
 
             itemData: {
                 get() {
-                    return this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)]
+                    return this.QUANTITY_BASKET[this.BASKET.findIndex(x=>x.T === this.item.T)]
                 },
                 set(value) {
                     let data = {
@@ -62,7 +62,7 @@
     .item-product {
         width: 100%;
         display: flex;
-        background: rgba(24, 161, 11, 0.19);
+        background: rgba(33, 92, 99, 0.19);
        flex-direction: column;
 
         .item-wrap{

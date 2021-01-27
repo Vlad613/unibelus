@@ -16,28 +16,25 @@ export const getters = {
 
 export const mutations = {
     ADD_TO_BASKET(state, payload) {
-        state.basket.indexOf(payload) !== -1 ?
-                    (((this.state.data.data[state.basket.indexOf(payload)].P > 0) && ((this.state.data.data[this.state.data.data.indexOf(payload)].P - state.quantity[state.basket.indexOf(payload)]) !== 0) ?
-                        state.quantity.splice(state.basket.indexOf(payload), 1, ++(state.quantity[state.basket.indexOf(payload)]))
+        state.basket.findIndex(x=>x.T === payload.T) !== -1 ?
+                    (((this.state.data.data[state.basket.findIndex(x=>x.T === payload.T)].P > 0) && ((this.state.data.data[this.state.data.data.findIndex(x=>x.T === payload.T)].P - state.quantity[state.basket.findIndex(x=>x.T === payload.T)]) !== 0) ?
+                        state.quantity.splice(state.basket.findIndex(x=>x.T === payload.T), 1, ++(state.quantity[state.basket.findIndex(x=>x.T === payload.T)]))
                         :
                         alert("Больше нет в наличии")))
                     :
                     (state.basket.push(payload),
                         state.quantity.push(1))
-        console.log(state.basket.indexOf(payload))
-        console.log(state.basket)
-        console.log(payload)
     },
     INPUT_TO_BASKET(state, payload) {
-        (state.quantity.splice(state.basket.indexOf(payload.item), 1, payload.value))
+        state.quantity.splice(state.basket.findIndex(x=>x.T === payload.item.T), 1, payload.value)
     },
     REMOVE_FROM_BASKET(state, payload) {
-        state.basket.indexOf(payload) !== -1 ?
-            ((state.quantity[state.basket.findIndex(x=>x.value === payload)] === 0 || (state.quantity[state.basket.indexOf(payload)] === 1)) ?
-                (state.basket.splice(state.basket.indexOf(payload), 1),
-                    state.quantity.splice(state.basket.indexOf(payload), 1))
+        state.basket.findIndex(x=>x.T === payload.T) !== -1 ?
+            ((state.quantity[state.basket.findIndex(x=>x.T === payload.T)] === 0 || (state.quantity[state.basket.findIndex(x=>x.T === payload.T)] === 1)) ?
+                (state.basket.splice(state.basket.findIndex(x=>x.T === payload.T), 1),
+                    state.quantity.splice(state.basket.findIndex(x=>x.T === payload.T), 1))
                 :
-                state.quantity.splice(state.basket.indexOf(payload), 1, --(state.quantity[state.basket.indexOf(payload)])))
+                state.quantity.splice(state.basket.findIndex(x=>x.T === payload.T), 1, --(state.quantity[state.basket.findIndex(x=>x.T === payload.T)])))
             :
             alert('Нет в корзине')
     },

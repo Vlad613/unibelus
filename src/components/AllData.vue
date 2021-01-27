@@ -32,17 +32,19 @@
         border-radius: 5px;
         border: 1px solid black;
         overflow: hidden;
+
         .title {
             display: flex;
             justify-content: center;
             width: 100%;
-            background-color: #d2dee2;
+            background-color: #c3e2ad;
             border-bottom: 1px solid black;
             color: #444444;
             font-weight: 600;
             font-size: 16px;
             line-height: 24px;
         }
+
         .item-products {
             width: 100%;
             display: flex;

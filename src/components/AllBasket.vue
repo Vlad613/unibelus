@@ -6,7 +6,7 @@
                            :item="item"
                            :activeStyle="(index % 2) == 0? false : true"/>
         <span class="AllPrice">
-    Общая стоимость: {{allPrice}} BYN
+              Общая стоимость: {{Number(Math.round((allPrice)+'e'+2)+'e-'+2)}} BYN
 </span>
     </div>
 </template>
@@ -41,20 +41,20 @@
         flex-direction: column;
         border: 1px solid black;
         border-radius: 5px;
-        margin: 5px 0;
         overflow: hidden;
         min-height: 25px;
         height: max-content;
 
         .title {
             text-align: center;
-            background-color: #d2dee2;
+            background-color: #c3e2ad;
             border-bottom: 1px solid black;
             font-weight: 600;
             font-size: 16px;
             line-height: 24px;
         }
-        .AllPrice{
+
+        .AllPrice {
             display: flex;
             justify-content: space-between;
         }

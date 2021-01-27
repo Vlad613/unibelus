@@ -1,13 +1,15 @@
 <template>
-    <div :class="['item-product', {'item-product-2':activeStyle}]">
+    <div :class="['item-product', {'item-product-2':activeStyle}, {'item-product-in-basket':inBasket}]">
         <div class="title-block">
             <div class="title">
                     <span style="font-size: 20px">{{item.B}}</span>
                     <span>Осталось: {{itemLeft}} шт.</span>
             </div>
             <div class="btns">
-                <button @click="addToBasket(item)">+</button>
-                <button @click="removeFromBasket(item)">-</button>
+                <span style="margin-right: 10px"
+                v-show="inBasket">Добавлен</span>
+                <button  @click="addToBasket(item)">+</button>
+                <button  @click="removeFromBasket(item)">-</button>
             </div>
         </div>
         <div :class="['price', {'price-2':activeStyle}]">
@@ -26,13 +28,19 @@
         computed: {
             ...mapGetters('basket', ["QUANTITY_BASKET", "BASKET"]),
             itemLeft() {
-                let i = this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)] !== undefined ?
-                    this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)]
+                let i = this.QUANTITY_BASKET[this.BASKET.findIndex(x=>x.T === this.item.T)] !== undefined ?
+                    this.QUANTITY_BASKET[this.BASKET.findIndex(x=>x.T === this.item.T)]
                     :
                     0;
                 return this.item.P - i
+            },
+            inBasket(){
+                return (this.QUANTITY_BASKET[this.BASKET.findIndex(x=>x.T === this.item.T)] !== undefined
+                    && this.QUANTITY_BASKET[this.BASKET.findIndex(x=>x.T === this.item.T)] > 0)
+
             }
         },
+
         methods: {
             ...mapActions('basket', ['addToBasket', 'removeFromBasket']),
         }
@@ -43,7 +51,7 @@
     .item-product {
         width: 100%;
         display: flex;
-        background: rgba(24, 161, 11, 0.19);
+        background: rgba(33, 92, 99, 0.19);
 
         .title-block {
             width: 75%;
@@ -61,6 +69,7 @@
 
             .btns {
                 display: flex;
+                margin-left: 20px;
 
                 button {
                     width: 25px;
@@ -90,5 +99,8 @@
 
     .item-product-2 {
         background: rgba(12, 72, 6, 0.19);
+    }
+    .item-product-in-basket {
+        background-color: rgba(26, 162, 68, 0.95);
     }
 </style>
