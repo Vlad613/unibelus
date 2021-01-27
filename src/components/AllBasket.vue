@@ -37,8 +37,7 @@
 
 <style scoped lang="scss">
     .all-basket {
-        position: fixed;
-        left: calc(100% - 39%);
+        position: sticky;
         width: 39%;
         display: flex;
         flex-direction: column;

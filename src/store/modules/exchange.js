@@ -8,10 +8,9 @@ export const getters = {
     CURSE(state) {
         return state.curse;
     },
-    CURSE_UP(state){
-        return state.curseUp
-    }
-
+    // CURSE_UP(state){
+    //     return state.curseUp
+    // }
 };
 
 export const mutations = {

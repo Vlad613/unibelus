@@ -2,25 +2,47 @@
     <div id="app">
         <AllData/>
         <AllBasket/>
+        <button @click="clearCookies">clear cookies</button>
     </div>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import Cookies from "js-cookie";
+    import {mapActions, mapGetters} from 'vuex'
     import AllData from "./components/AllData";
     import AllBasket from "./components/AllBasket";
 
     export default {
         name: 'App',
         components: {AllData, AllBasket},
-        methods:{
-            ...mapActions('exchange', ["changeCurse"])
+        methods: {
+            ...mapActions('exchange', ["changeCurse"]),
+            ...mapActions('basket', ["getCookieBasket", "getCookieQuantity", "setCookies"]),
+
+            clearCookies() {
+                Cookies.remove('basket'),
+                    Cookies.remove('quantity')
+            }
         },
+        computed: {
+            ...mapGetters('basket', ["BASKET", "QUANTITY_BASKET"])
+        },
+        watch: {
+            BASKET() {
+                this.setCookies()
+            },
+            QUANTITY_BASKET() {
+                this.setCookies()
+            }
+        },
+
         created() {
-            this.changeCurse()
-        },
-        beforeDestroy() {
-            this.changeCurse()
+            if (Cookies.get("basket") != null) {
+                this.getCookieBasket(Cookies.getJSON("basket"));
+            }
+            if (Cookies.get("quantity") != null) {
+                this.getCookieQuantity(Cookies.getJSON("quantity"));
+            }
         }
     }
 </script>

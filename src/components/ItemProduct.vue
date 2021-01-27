@@ -2,7 +2,8 @@
     <div :class="['item-product', {'item-product-2':activeStyle}]">
         <div class="title-block">
             <div class="title">
-                {{NAMES[item.G].B[item.T].N}} ({{itemLeft}})
+                    <span style="font-size: 20px">{{NAMES[item.G].B[item.T].N}}</span>
+                    <span>Осталось: {{itemLeft}} шт.</span>
             </div>
             <div class="btns">
                 <button @click="addToBasket(item)">+</button>
@@ -10,7 +11,7 @@
             </div>
         </div>
         <div :class="['price',  {'price-2':activeStyle}]">
-            <span :class="['value',{'value-dawn' : CURSE_UP==='up' }, {'value-up' : CURSE_UP==='dawn' }]">{{Number(Math.round((item.C * CURSE)+'e'+2)+'e-'+2)}}</span><span> BYN</span>
+            <span :class="['value']">{{Number(Math.round((item.C * CURSE)+'e'+2)+'e-'+2)}}</span><span> BYN</span>
         </div>
 
     </div>
@@ -25,7 +26,7 @@
         computed: {
             ...mapGetters('names', ['NAMES']),
             ...mapGetters('basket', ["QUANTITY_BASKET", "BASKET"]),
-            ...mapGetters('exchange', ["CURSE", "CURSE_UP"]),
+            ...mapGetters('exchange', ["CURSE"]),
             itemLeft() {
                 let i = this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)] !== undefined ?
                     this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)]
@@ -50,7 +51,15 @@
             width: 75%;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 10px 10px 10px 20px;
+
+            .title{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-height: 40px;
+            }
 
             .btns {
                 display: flex;
@@ -66,17 +75,20 @@
             width: 25%;
             background-color: #f3f3f3;
             display: flex;
-            span{
+
+            span {
                 font-size: 24px;
                 width: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-            .value-up{
+
+            .value-up {
                 color: green;
             }
-            .value-dawn{
+
+            .value-dawn {
                 color: red;
             }
 
