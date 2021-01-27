@@ -6,7 +6,7 @@
                            :item="item"
                            :activeStyle="(index % 2) == 0? false : true"/>
         <span class="AllPrice">
-    Общая стоимость: {{Number(Math.round((allPrice * CURSE)+'e'+2)+'e-'+2)}} BYN
+    Общая стоимость: {{allPrice}} BYN
 </span>
     </div>
 </template>
@@ -20,9 +20,7 @@
         components: {ItemProductBasket},
         computed: {
             ...mapGetters('data', ["DATA"]),
-            ...mapGetters('names', ['NAMES']),
             ...mapGetters('basket', ["BASKET", "QUANTITY_BASKET"]),
-            ...mapGetters('exchange', ["CURSE"]),
 
             allPrice() {
                 let allPriceStart = 0;

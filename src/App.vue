@@ -16,7 +16,6 @@
         name: 'App',
         components: {AllData, AllBasket},
         methods: {
-            ...mapActions('exchange', ["changeCurse"]),
             ...mapActions('basket', ["getCookieBasket", "getCookieQuantity", "setCookies"]),
 
             clearCookies() {

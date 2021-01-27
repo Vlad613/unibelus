@@ -3,14 +3,14 @@
         <div class="item-wrap">
             <div class="title-block">
                 <div class="title">
-                    {{NAMES[item.G].B[item.T].N}}
+                    {{item.B}}
                 </div>
                 <div class="quantity">
                     <input type="number" v-model="itemData"><span> шт.</span>
                 </div>
             </div>
             <div :class="['price',  {'price-2':activeStyle}]">
-               <span>{{Number(Math.round((item.C * CURSE)+'e'+2)+'e-'+2)}}</span> <span>BYN</span>
+               <span>{{item.C}}</span> <span>BYN</span>
             </div>
         </div>
         <div class="err" v-if="err">
@@ -33,9 +33,7 @@
         },
 
         computed: {
-            ...mapGetters('names', ['NAMES']),
             ...mapGetters('basket', ["BASKET", "QUANTITY_BASKET"]),
-            ...mapGetters('exchange', ["CURSE"]),
 
             itemData: {
                 get() {

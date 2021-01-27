@@ -2,7 +2,7 @@
     <div :class="['item-product', {'item-product-2':activeStyle}]">
         <div class="title-block">
             <div class="title">
-                    <span style="font-size: 20px">{{NAMES[item.G].B[item.T].N}}</span>
+                    <span style="font-size: 20px">{{item.B}}</span>
                     <span>Осталось: {{itemLeft}} шт.</span>
             </div>
             <div class="btns">
@@ -10,8 +10,8 @@
                 <button @click="removeFromBasket(item)">-</button>
             </div>
         </div>
-        <div :class="['price',  {'price-2':activeStyle}]">
-            <span :class="['value']">{{Number(Math.round((item.C * CURSE)+'e'+2)+'e-'+2)}}</span><span> BYN</span>
+        <div :class="['price', {'price-2':activeStyle}]">
+            <span>{{item.C}}</span><span> BYN</span>
         </div>
 
     </div>
@@ -24,9 +24,7 @@
         name: 'ItemProduct',
         props: ['item', 'activeStyle'],
         computed: {
-            ...mapGetters('names', ['NAMES']),
             ...mapGetters('basket', ["QUANTITY_BASKET", "BASKET"]),
-            ...mapGetters('exchange', ["CURSE"]),
             itemLeft() {
                 let i = this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)] !== undefined ?
                     this.QUANTITY_BASKET[this.BASKET.indexOf(this.item)]
@@ -83,15 +81,6 @@
                 align-items: center;
                 justify-content: center;
             }
-
-            .value-up {
-                color: green;
-            }
-
-            .value-dawn {
-                color: red;
-            }
-
         }
 
         .price-2 {

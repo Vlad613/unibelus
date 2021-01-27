@@ -16,7 +16,6 @@ export const getters = {
 
 export const mutations = {
     ADD_TO_BASKET(state, payload) {
-        debugger
         state.basket.indexOf(payload) !== -1 ?
                     (((this.state.data.data[state.basket.indexOf(payload)].P > 0) && ((this.state.data.data[this.state.data.data.indexOf(payload)].P - state.quantity[state.basket.indexOf(payload)]) !== 0) ?
                         state.quantity.splice(state.basket.indexOf(payload), 1, ++(state.quantity[state.basket.indexOf(payload)]))
@@ -33,7 +32,6 @@ export const mutations = {
         (state.quantity.splice(state.basket.indexOf(payload.item), 1, payload.value))
     },
     REMOVE_FROM_BASKET(state, payload) {
-        debugger
         state.basket.indexOf(payload) !== -1 ?
             ((state.quantity[state.basket.findIndex(x=>x.value === payload)] === 0 || (state.quantity[state.basket.indexOf(payload)] === 1)) ?
                 (state.basket.splice(state.basket.indexOf(payload), 1),
