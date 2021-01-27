@@ -64,7 +64,6 @@ export const actions = {
     inputToBasket({commit}, item) {
         commit("INPUT_TO_BASKET", item);
     },
-
     getCookieBasket({commit}, payload) {
         commit('GET_BASKET_FROM_COOKIES', {payload})
     },

@@ -36,6 +36,7 @@
 <style scoped lang="scss">
     .all-basket {
         position: sticky;
+        top: 0;
         width: 39%;
         display: flex;
         flex-direction: column;
@@ -44,6 +45,7 @@
         overflow: hidden;
         min-height: 25px;
         height: max-content;
+
 
         .title {
             text-align: center;

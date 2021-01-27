@@ -2,9 +2,9 @@
     <div id="app">
         <div class="shop-wrap">
             <AllData/>
-            <AllBasket/>
+            <button class="clear-btn" @click="clearCookies">clear cookies</button>
         </div>
-        <button class="clear-btn" @click="clearCookies">clear cookies</button>
+            <AllBasket/>
     </div>
 </template>
 
@@ -58,13 +58,16 @@
         max-width: 1600px;
         margin: 0 auto 0 auto;
         display: flex;
-        flex-direction: column;
-        .shop-wrap{
+        justify-content: space-between;
+
+        .shop-wrap {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            width: 60%;
         }
-        .clear-btn{
-            margin-top: 20px;
+
+        .clear-btn {
+            margin: 20px 0;
             width: 150px;
             height: 50px;
         }
