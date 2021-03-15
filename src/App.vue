@@ -5,6 +5,8 @@
             <button class="clear-btn" @click="clearCookies">clear cookies</button>
         </div>
             <AllBasket/>
+      //some test text commit
+      <div class="testt">
     </div>
 </template>
 
